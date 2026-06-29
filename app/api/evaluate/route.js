@@ -8,7 +8,8 @@ export async function POST(request) {
     const { query, exerciseId, runOnly } = await request.json();
 
     // 1. Validar parámetros de entrada
-    if (!exerciseId) {
+    // Nota: ejercicio id=0 es válido (Sandbox Libre), por eso no se usa !exerciseId
+    if (exerciseId === undefined || exerciseId === null) {
       return NextResponse.json({ success: false, error: 'Falta el ID del ejercicio.' }, { status: 400 });
     }
 
