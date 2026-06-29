@@ -325,6 +325,7 @@ export default function Home() {
           isDDL: data.isDDL,
           ddlMessage: data.ddlMessage,
           rowsModified: data.rowsModified,
+          mysqlAdapted: data.mysqlAdapted,
           errorSQL: data.errorSQL
         });
         setActiveTab('resultados');
@@ -375,6 +376,7 @@ export default function Home() {
           isDDL: data.isDDL,
           ddlMessage: data.ddlMessage,
           rowsModified: data.rowsModified,
+          mysqlAdapted: data.mysqlAdapted,
           errorSQL: data.errorSQL,
           feedback: data.feedback
         });
@@ -778,6 +780,30 @@ export default function Home() {
                                 — {evalResult.ddlMessage}
                               </span>
                             )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Nota de adaptación MySQL → SQLite */}
+                      {evalResult?.mysqlAdapted && evalResult.mysqlAdapted.length > 0 && (
+                        <div className="score-banner" style={{
+                          background: 'rgba(251,191,36,0.12)',
+                          border: '1px solid rgba(251,191,36,0.3)',
+                          color: '#fbbf24',
+                          marginBottom: '1rem'
+                        }}>
+                          <Info size={16} />
+                          <div style={{ fontSize: '0.8rem' }}>
+                            <strong>Adaptación automática MySQL → SQLite:</strong>{' '}
+                            {evalResult.mysqlAdapted.map((s, i) => (
+                              <code key={i} style={{
+                                background: 'rgba(0,0,0,0.3)',
+                                padding: '1px 5px',
+                                borderRadius: '3px',
+                                marginRight: '4px'
+                              }}>{s}</code>
+                            ))}{' '}
+                            fue(ron) ignorada(s) (no existen en SQLite).
                           </div>
                         </div>
                       )}

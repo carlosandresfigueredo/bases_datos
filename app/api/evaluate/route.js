@@ -27,6 +27,7 @@ export async function POST(request) {
         isDDL: studentResult.isDDL,
         rowsModified: studentResult.rowsModified,
         ddlMessage: studentResult.message,
+        mysqlAdapted: studentResult.mysqlAdapted,
         errorSQL: studentResult.success ? null : studentResult.error
       });
     }
@@ -141,6 +142,7 @@ export async function POST(request) {
       isDDL: studentResult.isDDL,
       rowsModified: studentResult.rowsModified,
       ddlMessage: studentResult.message,
+      mysqlAdapted: studentResult.mysqlAdapted,
       errorSQL: studentResult.success ? null : studentResult.error,
       feedback: aiFeedback
     });

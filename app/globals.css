@@ -220,6 +220,7 @@ body {
 .badge-facil { background-color: rgba(16, 185, 129, 0.15); color: #34d399; }
 .badge-medio { background-color: rgba(245, 158, 11, 0.15); color: #fbbf24; }
 .badge-dificil { background-color: rgba(244, 63, 94, 0.15); color: #f87171; }
+.badge-libre { background-color: rgba(139, 92, 246, 0.18); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
 
 .badge-category {
   color: var(--text-secondary);
