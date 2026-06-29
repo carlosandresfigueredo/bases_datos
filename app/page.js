@@ -322,6 +322,9 @@ export default function Home() {
         setEvalResult({
           runOnly: true,
           datosEstudiante: data.datosEstudiante,
+          isDDL: data.isDDL,
+          ddlMessage: data.ddlMessage,
+          rowsModified: data.rowsModified,
           errorSQL: data.errorSQL
         });
         setActiveTab('resultados');
@@ -369,6 +372,9 @@ export default function Home() {
           score: data.score,
           datosEstudiante: data.datosEstudiante,
           datosEsperados: data.datosEsperados,
+          isDDL: data.isDDL,
+          ddlMessage: data.ddlMessage,
+          rowsModified: data.rowsModified,
           errorSQL: data.errorSQL,
           feedback: data.feedback
         });
@@ -758,6 +764,21 @@ export default function Home() {
                             <FileDown size={12} />
                             <span>Exportar JSON</span>
                           </button>
+                        </div>
+                      )}
+
+                      {/* Éxito DDL/DML: CREATE, INSERT, UPDATE, DELETE, DROP */}
+                      {evalResult && evalResult.isDDL && !evalResult.errorSQL && (
+                        <div className="score-banner success" style={{ marginBottom: '1rem' }}>
+                          <CheckCircle2 size={18} />
+                          <div>
+                            <strong>Sentencia ejecutada correctamente</strong>
+                            {evalResult.ddlMessage && (
+                              <span style={{ marginLeft: '0.5rem', fontWeight: 400, opacity: 0.9 }}>
+                                — {evalResult.ddlMessage}
+                              </span>
+                            )}
+                          </div>
                         </div>
                       )}
 

@@ -24,6 +24,9 @@ export async function POST(request) {
         success: true,
         runOnly: true,
         datosEstudiante: studentResult.success ? studentResult.rows : null,
+        isDDL: studentResult.isDDL,
+        rowsModified: studentResult.rowsModified,
+        ddlMessage: studentResult.message,
         errorSQL: studentResult.success ? null : studentResult.error
       });
     }
@@ -135,6 +138,9 @@ export async function POST(request) {
       score,
       datosEstudiante: studentResult.success ? studentResult.rows : null,
       datosEsperados: refResult.rows,
+      isDDL: studentResult.isDDL,
+      rowsModified: studentResult.rowsModified,
+      ddlMessage: studentResult.message,
       errorSQL: studentResult.success ? null : studentResult.error,
       feedback: aiFeedback
     });
