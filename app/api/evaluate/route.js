@@ -19,7 +19,7 @@ export async function POST(request) {
 
     // 1.5 Ejecución rápida de solo prueba
     if (runOnly) {
-      const studentResult = executeSandbox(exercise.schemaSQL, exercise.seedSQL, query);
+      const studentResult = await executeSandbox(exercise.schemaSQL, exercise.seedSQL, query);
       return NextResponse.json({
         success: true,
         runOnly: true,
@@ -29,7 +29,7 @@ export async function POST(request) {
     }
 
     // 2. Ejecutar la consulta del profesor (Referencia)
-    const refResult = executeSandbox(exercise.schemaSQL, exercise.seedSQL, exercise.referenceSQL);
+    const refResult = await executeSandbox(exercise.schemaSQL, exercise.seedSQL, exercise.referenceSQL);
     if (!refResult.success) {
       return NextResponse.json({
         success: false,
@@ -38,7 +38,7 @@ export async function POST(request) {
     }
 
     // 3. Ejecutar la consulta del estudiante en el sandbox
-    const studentResult = executeSandbox(exercise.schemaSQL, exercise.seedSQL, query);
+    const studentResult = await executeSandbox(exercise.schemaSQL, exercise.seedSQL, query);
 
     // 4. Comparar resultados
     let isCorrect = false;
